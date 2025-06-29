@@ -1,7 +1,12 @@
 import { Button, Link } from "@heroui/react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 
 export default function HeroSection() {
+
+  const navigate = useNavigate() ; 
+
   return (
     <section className="w-full bg-white py-24 px-6">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col-reverse md:flex-row items-center justify-between">
@@ -21,8 +26,7 @@ export default function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <Button
-              as={Link}
-              href="/upload"
+              onPress = {() => navigate("/upload")} 
               color="primary"
               size="lg"
               radius="lg"
@@ -31,8 +35,7 @@ export default function HeroSection() {
               Upload 3D Model
             </Button>
             <Button
-              as={Link}
-              href="/services"
+              onPress = {() => navigate("how-it-works")}
               variant="bordered"
               size="lg"
               radius="lg"

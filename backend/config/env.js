@@ -10,5 +10,8 @@ export const {
     DB_URI,
     JWT_SECRET, 
     JWT_EXPIRES_IN,
+    GOOGLE_CLIENT_ID,
+    EMAIL_PASSWORD,
+    EMAIL_USER,
 
 } = process.env ; 

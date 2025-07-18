@@ -9,11 +9,12 @@ import {
   Divider,
   Link
 } from "@heroui/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function LoginModal({ isOpen, onClose, onSignupClick }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const googleBtnRef = useRef(null);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -42,9 +43,40 @@ export default function LoginModal({ isOpen, onClose, onSignupClick }) {
     }
   };
 
-  const handleGoogleLogin = () => {
-    alert("🔐 Google login integration goes here!");
+  const handleGoogleResponse = async (response) => {
+    try {
+      const res = await fetch("http://localhost:5500/api/v1/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credential: response.credential })
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        alert("Google Login successful!");
+        onClose();
+      } else {
+        alert(data.message || "Google Login failed");
+      }
+    } catch (err) {
+      alert("Something went wrong with Google login!");
+    }
   };
+
+  useEffect(() => {
+    if (window.google && googleBtnRef.current) {
+      window.google.accounts.id.initialize({
+        client_id: "427702363634-elrhnbleslfhjvgsu9tls08ohqs1mo3h.apps.googleusercontent.com", // ⬅️ replace with actual client ID
+        callback: handleGoogleResponse
+      });
+
+      window.google.accounts.id.renderButton(googleBtnRef.current, {
+        theme: "outline",
+        size: "large",
+        width: "100%",
+      });
+    }
+  }, [isOpen]); // re-render when modal opens
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} backdrop="blur">
@@ -99,21 +131,7 @@ export default function LoginModal({ isOpen, onClose, onSignupClick }) {
 
           <Divider className="my-2" />
 
-          <Button
-            onPress={handleGoogleLogin}
-            color="default"
-            variant="bordered"
-            fullWidth
-            className="flex items-center justify-center gap-3 py-2 font-semibold text-gray-800"
-          >
-            <img
-              src="/google-logo.png"
-              alt="Google"
-              className="w-5 h-5 object-contain"
-              style={{ aspectRatio: '1 / 1' }}
-            />
-            Continue with Google
-          </Button>
+          <div ref={googleBtnRef} className="w-full flex justify-center"></div>
         </ModalBody>
 
         <ModalFooter className="justify-center text-sm text-gray-600">

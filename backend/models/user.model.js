@@ -28,15 +28,36 @@ const userSchema = new mongoose.Schema({
     enum: ['email', 'google'],
     default: 'email',
   },
+  emailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  emailVerificationToken: {
+    type: String,
+    default: null,
+  },
+  emailVerificationExpires: {
+    type: Date,
+    default: null,
+  },
+  resetPasswordToken: {
+    type: String,
+    default: null,
+  },
+  resetPasswordExpires: {
+    type: Date,
+    default: null,
+  },
 }, { timestamps: true });
 
 userSchema.set("toJSON", {
   transform: function (doc, ret, options) {
     delete ret.password;
+    delete ret.emailVerificationToken;
+    delete ret.resetPasswordToken;
     return ret;
   },
 });
-
 
 const User = mongoose.model('User', userSchema);
 

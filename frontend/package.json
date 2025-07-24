@@ -13,6 +13,7 @@
     "@heroui/react": "^2.7.11",
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
+    "axios": "^1.11.0",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.519.0",
     "react": "^19.1.0",

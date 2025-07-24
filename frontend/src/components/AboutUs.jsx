@@ -17,10 +17,10 @@ export default function AboutUs() {
     <section className="w-full bg-gradient-to-b from-white via-[#f8f9fc] to-white py-24 px-6 md:px-20 text-gray-800" id="about">
       <div className="max-w-5xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          About <span className="text-primary">Tprints</span>
+          About <span className="text-primary">FirstLayerLabs</span>
         </h2>
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-          Tprints is your gateway to fast, accessible, and reliable 3D printing. We empower designers, engineers, and makers to turn their ideas into tangible products — effortlessly.
+          FirstLayerLabs is your gateway to fast, accessible, and reliable 3D printing. We empower designers, engineers, and makers to turn their ideas into tangible products — effortlessly.
         </p>
       </div>
 

@@ -14,7 +14,7 @@ export default function ContactUs() {
 
         {/* Brand & Address (Column 1) */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900">Tprints</h2>
+          <h2 className="text-2xl font-bold text-gray-900">FirstLayerLabs</h2>
           <p className="text-gray-700 text-sm max-w-sm">
             Where your 3D ideas come to life. Upload, print, and receive them at your doorstep.
           </p>
@@ -29,7 +29,7 @@ export default function ContactUs() {
           <h3 className="font-semibold text-gray-900 text-lg">Contact</h3>
           <div className="flex items-center gap-2 text-gray-700 text-sm">
             <FaEnvelope className="text-primary" />
-            <span>support@tprints.io</span>
+            <span>support@firstlayerlabs.in</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700 text-sm">
             <FaPhone className="text-primary" />
@@ -56,7 +56,7 @@ export default function ContactUs() {
 
       {/* Bottom Note */}
       <div className="text-center text-sm text-gray-500 mt-10 border-t pt-4 border-white/20">
-        © {new Date().getFullYear()} Tprints. All rights reserved.
+        © {new Date().getFullYear()} FirstLayerLabs. All rights reserved.
       </div>
     </footer>
   );
